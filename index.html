@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+ 
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="description" content="${description}" />
+
+        <!-- タイトル　-->
+        <title>MelOn</title>
+
+        <!-- cssファイル読み込み -->
+        <link rel="stylesheet" type="text/css" href="css/app.css"/>
+
+        <!-- ライブラリ読み込み　-->
+        <script src="lib/tmlib052.js"></script>
+        <script src="lib/underscore-master/underscore.js"></script>
+        <script src="lib/jquery-1.11.3.js"></script>
+  
+        <!-- ソースコード読み込み -->
+        <script src="script/ConstApp.js"></script>
+        <script src="script/ImportAssets.js"></script>
+        <script src="script/ImportSounds.js"></script>
+        <script src="script/ImportJSFiles.js"></script>
+        <script src="script/Main.js"></script>
+    </head>
+
+    <body>
+    	<!-- アプリケーション描画　-->
+        <div class="wrapper">
+        <canvas id="app"></canvas>
+        </div>
+    </body>
+</html>
