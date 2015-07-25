@@ -10,6 +10,7 @@ tm.define("MusicPlayer", {
 
 	bpm: 100,
 	_isPlaying: false,
+	useMetronome: true,
 	frame: 0,
 	elementFrame: 0,
 	playingElementNum: 0,
@@ -18,8 +19,9 @@ tm.define("MusicPlayer", {
 
 	init: function (param) {
 		this.superInit(param);
-		this.bpm = this.param.defaultBpm
+		this.bpm = this.param.defaultBpm;
 		this.openedMaxMeasureNum = this.param.defaultOpenedMaxMeasureNum;
+		this.beatNum = this.param.minNote / 4;
 	},
 
 	extendScore: function () {
@@ -85,11 +87,18 @@ tm.define("MusicPlayer", {
 
 	advance: function() {
 		if(this.frame >= this.elementFrame * this.playingElementNum){
+			this.playMetronome();
 			this.playElement();
 			this.playingElementNum++;
 			this.notify();
 			this.checkStop();
 		}
+	},
+
+	playMetronome: function () {
+		if(!this.useMetronome) return;
+		if(this.playingElementNum % this.beatNum == 0)
+			SOUND["SE"]["Metronome"].play();
 	},
 
 	checkStop: function () {
