@@ -19,6 +19,7 @@ var SOUND_MAP = {
 	SE:
 	{
 		"MelOn!": "MelOn!.mp3",
+		"Metronome": "tamb.mp3",
 	},
 	
 	BGM:
