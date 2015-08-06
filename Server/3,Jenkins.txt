@@ -19,11 +19,6 @@ fuurin_key.pemª‚ğg‚Á‚Äªfuurin_key.pem‚ğJenkinsƒT[ƒoª‚É“n‚·AªƒfƒBƒŒƒNƒgƒŠ‚
 Github‚ÌWebhook‚ÌIP‚ğ•Ï‚¦‚é‚Ì–Y‚ê‚Ä‚½¨Elastic‚µ‚½‚à‚Ì‚É•ÏX
 ¨hook¬Œ÷II‚µ‚©‚µƒfƒvƒƒC¸”s
 
-hostkey verification faild
-‚Æ‚Ì‚±‚Æ‚È‚Ì‚ÅAJenkinsƒT[ƒo‚Å
-chmod 744 fuurin_key.pem@‚µ‚Ä‚İ‚½
-¨ƒ_ƒ‚¾‚Á‚½c–³ˆÓ–¡‚È‚ç‚â‚ç‚È‚¢•û‚ª—Ç‚¢
-
 ÀÛ‚ÉJenkinsƒT[ƒo‚©‚çMemoryplusƒT[ƒo‚ÖsshƒƒOƒCƒ“‚µ‚Ä‚İ‚æ‚¤
 ¨ƒƒOƒCƒ“‚Å‚«‚½II
 
@@ -34,6 +29,7 @@ ssh‚Ì‘O‚Ésudo‚ğ•t‚¯‚Ä‚İ‚é‚±‚Æ‚É
 ƒOƒO‚é
 http://qiita.com/ykirishima/items/2f32dae7fa28a2b45801
 ‚ª‚Ç‚ñ‚Ò‚µ‚á‚È‚Ì‚Å‚·
+‚±‚ê‚ÍAJenkinsƒT[ƒo‚Å‚Í‚È‚­AƒfƒvƒƒCæƒT[ƒo‚Å‚â‚é‚±‚Æ‚È‚Ì‚Å’ˆÓ
 ¨¬Œ÷II‚ ‚Æ‚ÍƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚Ì•ÏX‚Å‚Ç‚¤‚É‚©‚È‚éI
 
 
@@ -47,6 +43,8 @@ http://qiita.com/ykirishima/items/2f32dae7fa28a2b45801
 ‚Æ‚è‚ ‚¦‚¸ƒOƒO‚é
 --git-dir=.git pull‚É‚·‚é‚Ì‚ªŠy‚»‚¤H
 ¨--git-dir=.git: command not found‚Å‚·‚æ‚Ë`
+
+ŠJ”­—pƒuƒ‰ƒ“ƒ`‚ğƒvƒ‹‚·‚é‚È‚çAgit checkout‚àƒVƒFƒ‹ƒXƒNƒŠƒvƒg‚ÉŠÜ‚Ş
 
 ’Pƒ‚ÉAsudo git pull‚·‚ê‚Î‚¢‚¢‚Ì‚Å‚ÍH
 ¨¬Œ÷‚—‚—‚—
