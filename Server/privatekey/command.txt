@@ -1,0 +1,5 @@
+MemoryPlus
+ssh -i fuurin_key.pem ec2-user@54.64.114.125
+
+MelOn
+ssh -i fuurin_key.pem ec2-user@52.69.209.62
