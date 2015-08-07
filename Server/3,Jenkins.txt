@@ -20,6 +20,7 @@ fuurin_key.pemª‚ğg‚Á‚Äªfuurin_key.pem‚ğJenkinsƒT[ƒoª‚É“n‚·AªƒfƒBƒŒƒNƒgƒŠ‚
 GitHub project‚Éhttps://github.com/class-snct-rikitakelab/MelOn/
 Git‚ÌRepositories‚Égit@github.com:class-snct-rikitakelab/MelOn.git
 Github‚ÌWebhook‚Ìurl‚Éhttp://54.92.112.135:8080/
+SCM‚ğƒ|[ƒŠƒ“ƒO‚Éƒ`ƒFƒbƒN
 ¨hook¬Œ÷I
 
 ÀÛ‚ÉJenkinsƒT[ƒo‚©‚çMemoryplusƒT[ƒo‚ÖsshƒƒOƒCƒ“‚µ‚Ä‚İ‚æ‚¤
