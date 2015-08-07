@@ -1,109 +1,35 @@
 関さんの論文を使う→6.3の手前まで
 
-デプロイが多分できないので、ネットを使う
+これを中心に進める
 http://sil.hatenablog.com/entry/jenkins-github-auto-deploy
-やっぱりこれ？
 
-「Jenkinsによるデプロイテスト」のシェルスクリプト打ち込むとこから
-ssh -i /var/lib/jenkins/.ssh/fuurin_key.pem ec2-user@54.64.114.125 "cd /home/ec2-user/samples/ ; git pull origin master"
-に変更して打ち込んだ
-
+・秘密鍵をJenkinsサーバに渡す（必要なら）
 このあとの「サーバへログイン」とは、Jenkinsサーバのこととして進める
-
 [クライアントへ戻る]は、以下のようにする
 以下をCygwinで打って、Jenkinsサーバにfuurin_key.pemを渡す
 cd /cygdrive/h/研究室/privatekey(fuurin_key.pemがあるとこ）
 scp -i fuurin_key.pem fuurin_key.pem ec2-user@54.92.112.135:/home/ec2-user
 fuurin_key.pem↑を使って↑fuurin_key.pemをJenkinsサーバ↑に渡す、↑ディレクトリはココ
 
-
+・hook注意点
 GitHub projectにhttps://github.com/class-snct-rikitakelab/MelOn/
 GitのRepositoriesにgit@github.com:class-snct-rikitakelab/MelOn.git
-GithubのWebhookのurlにhttp://54.92.112.135:8080/
+GithubのWebhookのurlにhttp://54.92.112.135:8080/github-webhook/
 SCMをポーリングにチェック
-→hook成功！
 
-実際にJenkinsサーバからMemoryplusサーバへsshログインしてみよう
-→ログインできた！！
+・デプロイのシェルスクリプトで、sudo（tty?)を使えるようにする
+sudo: sorry, you must have a tty to run sudoとかいうエラーが発生してしまう
+http://qiita.com/ykirishima/items/2f32dae7fa28a2b45801　による
+これは、Jenkinsサーバではなく、「デプロイ先サーバで」やることなので注意
 
-.sshに行けないのが原因?
-sshの前にsudoを付けてみることに
-→sudo: sorry, you must have a tty to run sudoとかいうエラー発生
+・デプロイのシェルスクリプトの例
+ssh -i /var/lib/jenkins/.ssh/fuurin_key.pem ec2-user@54.64.114.125 "cd /home/ec2-user/samples/ ; git pull origin master"
 
-ググる
-http://qiita.com/ykirishima/items/2f32dae7fa28a2b45801
-がどんぴしゃなので試す
-これは、Jenkinsサーバではなく、デプロイ先サーバでやることなので注意
-→成功！！あとはシェルスクリプトの変更でどうにかなる！
+・その他注意
+どうやら、Everything－Up-to-dateだとhookしてくれないらしい
+開発用ブランチをプルするのは、git checkoutもシェルスクリプトに含むことで実現？
 
-
-
-
-
-シェルスクリプトをcd /var/www/html/samples/に変更して、公開してるやつをデプロイ
-→どうやら、Everything－Up-to-dateだとhookしてくれないらしい
-ちゃんと変更を作って（take11)やった
-→cannot open .git/FETCH_HEAD: Permission denied
-とりあえずググる
---git-dir=.git pullにするのが楽そう？
-→--git-dir=.git: command not foundですよね～
-
-開発用ブランチをプルするなら、git checkoutもシェルスクリプトに含む
-
-単純に、sudo git pullすればいいのでは？
-→成功ｗｗｗ
-
-
-
-
-
-後は
-・MemoryPlus自動デプロイ
-・本命の通知機能
-・これまでの手順のまとめ
-
-
-Windowsデスクトップにジョブ失敗を通知
-http://kyon-mm.hatenablog.com/entry/2014/08/11/134604?utm_source=zenback&utm_medium=http%3A//pronama.azurewebsites.net/2014/07/07/pronama-chan-jenkins/&utm_campaign=zb_related_links
-
-プロ生ちゃんにJenkinsのジョブ結果を通知してもらう
-http://pronama.azurewebsites.net/2014/07/07/pronama-chan-jenkins/
-
-
-
-・通知機能
-Jenkins実践入門P44～P48を行う
-SMTPサーバの設定
-http://www.iodata.jp/support/qanda/answer/s18443.htm
-→Authentification failedになったので、Gmailで安全性の低いアプリへのアクセスを有効化した
-
-Gmailへの適用が悪いので、↓
-http://nomnel.net/blog/jenkins-notification-using-gmail/
-のほうがいいかも？
-
-→アプリアクセスはとりあえず有効にする必要あるらしい、有効にするまで10分くらいかかる
-おそらくそのタイムラグが原因ではまった。よくわからないがテストメール送信に成功
-
-ジョブに埋め込む
-TEST-sample-deployの「ビルド後の処理」にE-mail通知を選択
-携帯のメルアドを入れて、プッシュしてみた
-→エラーを起こさないと送ってくれないらしい
-シェルスクリプトから@を取り除いて再挑戦
-→ちゃんと送られてきた。シェルスクリプト戻した
-
-
-
-ところで、Gitpushするとき、この方が楽↓の2
+・GitPushについて
 http://shoken.hatenablog.com/entry/20120629/p1
 パスワード入力を省略できる
 また、コマンドは；で区切って、一行で一気に出力できる。
-
-
-
-・これまでのまとめ
-GitHubと連携できるAWSJenkinsサーバの作り方
-自動デプロイを行うジョブの作り方（hookとdeploy）
-自動通知機能の設定とジョブ作成（Gmail）
-
-Qiitaとやらで作れるなら作りたい
-作ったら、それにしたがってMemoryplusにも適用できるか実験
