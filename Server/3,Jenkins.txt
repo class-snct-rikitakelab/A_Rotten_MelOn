@@ -16,6 +16,9 @@ cd /cygdrive/h/研究室/privatekey(fuurin_key.pemがあるとこ）
 scp -i fuurin_key.pem fuurin_key.pem ec2-user@54.92.112.135:/home/ec2-user
 fuurin_key.pem↑を使って↑fuurin_key.pemをJenkinsサーバ↑に渡す、↑ディレクトリはココ
 
+
+GitHub projectにhttps://github.com/class-snct-rikitakelab/MelOn/
+GitのRepositoriesにgit@github.com:class-snct-rikitakelab/MelOn.git
 GithubのWebhookのIPを変えるの忘れてた→Elasticしたものに変更
 →hook成功！！しかしデプロイ失敗
 
