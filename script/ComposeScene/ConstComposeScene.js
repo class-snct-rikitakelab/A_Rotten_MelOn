@@ -20,7 +20,7 @@ var INSTRUMENT_ARRAY = [
 
 var SCORE_PARAM = {
 	minNote: 8, //分音符
-	maxMeasureNum: 10,
+	maxMeasureNum: 3,
 	keyArray: KEY_ARRAY,
 	keyNumMap: KEY_NUM_MAP,
 	keyNum: KEY_ARRAY.length,
@@ -102,7 +102,7 @@ var SCROLLER_PARAM = {
 	displayMeasureNum: MASK_UI["displayMeasureNum"],
 	defaultLowestKeyNum: KEY_NUM_MAP["C3"],
 	defaultLeftestElementNum: 0,
-	defaultOpenedMaxMeasureNum: 10,
+	defaultOpenedMaxMeasureNum: 3,
 	// openedMaxMeasureNum は、ScrollerとMusicPlayer両方を操作すること
 };
 

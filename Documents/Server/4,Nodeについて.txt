@@ -1,0 +1,15 @@
+・スタートアップ
+http://liginc.co.jp/web/programming/node-js/85318
+sudo chmod 777 .nvm　で、nodeをインストールできるようにパーミッション変更
+AWS上で使うときは、listenするポートを解放すること
+
+・バックグラウンドのnodeを止める（バックグラウンドで動かしてれば、接続切っても動いてる）
+$ ps aux | grep node
+vagrant  14761  0.0  2.0 704016 38520 pts/0    Sl+  01:22   0:01 node app.js
+vagrant  15069  0.0  0.0 107456   908 pts/2    S+   01:59   0:00 grep --color=auto node
+$ sudo kill -9 14761
+
+・基本
+http://www.slideshare.net/YoshihiroIwanaga/20150502-node-intro
+node_modulesはリポジトリに上げないらしい
+npm install -g yoは、suだとどうも動かない

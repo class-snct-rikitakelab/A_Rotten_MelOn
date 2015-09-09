@@ -1,3 +1,0 @@
-http://liginc.co.jp/web/programming/node-js/85318
-sudo chmod 777 .nvm　で、nodeをインストールできるようにパーミッション変更
-AWS上で使うときは、listenするポートを解放すること

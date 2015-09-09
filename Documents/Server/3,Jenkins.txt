@@ -1,0 +1,35 @@
+関さんの論文を使う→6.3の手前まで
+
+これを中心に進める
+http://sil.hatenablog.com/entry/jenkins-github-auto-deploy
+
+・秘密鍵をJenkinsサーバに渡す（必要なら）
+このあとの「サーバへログイン」とは、Jenkinsサーバのこととして進める
+[クライアントへ戻る]は、以下のようにする
+以下をCygwinで打って、Jenkinsサーバにfuurin_key.pemを渡す
+cd /cygdrive/h/研究室/privatekey(fuurin_key.pemがあるとこ）
+scp -i fuurin_key.pem fuurin_key.pem ec2-user@54.92.112.135:/home/ec2-user
+fuurin_key.pem↑を使って↑fuurin_key.pemをJenkinsサーバ↑に渡す、↑ディレクトリはココ
+
+・hook注意点
+GitHub projectにhttps://github.com/class-snct-rikitakelab/MelOn/
+GitのRepositoriesにgit@github.com:class-snct-rikitakelab/MelOn.git
+GithubのWebhookのurlにhttp://54.92.112.135:8080/github-webhook/
+SCMをポーリングにチェック
+
+・デプロイのシェルスクリプトで、sudo（tty?)を使えるようにする
+sudo: sorry, you must have a tty to run sudoとかいうエラーが発生してしまう
+http://qiita.com/ykirishima/items/2f32dae7fa28a2b45801　による
+これは、Jenkinsサーバではなく、「デプロイ先サーバで」やることなので注意
+
+・デプロイのシェルスクリプトの例
+ssh -i /var/lib/jenkins/.ssh/fuurin_key.pem ec2-user@54.64.114.125 "cd /home/ec2-user/samples/ ; git pull origin master"
+
+・その他注意
+どうやら、Everything－Up-to-dateだとhookしてくれないらしい
+開発用ブランチをプルするのは、git checkoutもシェルスクリプトに含むことで実現？
+
+・GitPushについて
+http://shoken.hatenablog.com/entry/20120629/p1
+パスワード入力を省略できる
+また、コマンドは；で区切って、一行で一気に出力できる。
