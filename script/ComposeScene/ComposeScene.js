@@ -57,7 +57,7 @@ tm.define("ComposeScene", {
 		for(var i = 0; i < param.keyNum; i++) {
 			var keyName = param.keyArray[i];
 			Measure({}, MEASURE_UI, {keyName: keyName, measureNum: measureNum}).addChildTo(this.scrollGroup);
-			//this._createScoreElementsInKeyMeasure(param, keyName, measureNum);
+			this._createScoreElementsInKeyMeasure(param, keyName, measureNum);
 		}
 	},
 
